@@ -1,0 +1,18 @@
+
+mat-card{
+  margin: 10% 30%;
+  text-align: center;
+}
+form{
+  text-align: center;
+}
+mat-form-field{
+  width: 500px;
+}
+mat-card-title{
+  text-align: center;
+}
+a {
+  margin-left: -70%;
+  text-decoration: none;
+}

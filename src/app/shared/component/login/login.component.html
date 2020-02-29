@@ -1,0 +1,19 @@
+<mat-card>
+    <mat-card-title> <em>Login Using JWT</em> </mat-card-title>
+    <form [formGroup]="loginForm">
+      <mat-form-field >
+        <input matInput placeholder="Username" formControlName="email" autocomplete="off">
+        <mat-error *ngIf="hasError('email', 'required')">Email is required</mat-error>
+        <mat-error *ngIf="hasError('email', 'email')">Email is not valid</mat-error>
+      </mat-form-field>
+      <br>
+      <mat-form-field >
+        <input matInput placeholder="Password" formControlName="password" type="password" autocomplete="off">
+        <mat-error *ngIf="hasError('password', 'required')">Password is required</mat-error>
+      </mat-form-field>
+      <br>
+      <button mat-raised-button color="accent" (click)=login(loginForm.value) [disabled]="!loginForm.valid">LOGIN</button>
+      <br>
+      <a [routerLink]="['/register']" >Click here for register </a>
+    </form>
+  </mat-card>
