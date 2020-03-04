@@ -8,11 +8,10 @@ import {MatInputModule} from '@angular/material/input';
 import {MatCardModule} from '@angular/material/card';
 import { ReactiveFormsModule } from '@angular/forms';
 import {MatButtonModule} from '@angular/material/button';
-import { HttpClientModule } from '@angular/common/http';
-import { RegisterComponent } from './shared/component/register/register.component';
-import { LoginComponent } from './shared/component/login/login.component';
-
-
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { RegisterComponent } from './modules/auth/page/register/register.component';
+import { LoginComponent } from './modules/auth/page/login/login.component';
+import { TokenInterceptor } from './core/interceptor/token.interceptor'
 
 
 @NgModule({
@@ -31,7 +30,11 @@ import { LoginComponent } from './shared/component/login/login.component';
     MatButtonModule,
     HttpClientModule,
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: TokenInterceptor,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
